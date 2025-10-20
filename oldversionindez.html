@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronilyn Rodas - IT Professional Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #303c6c;
+            --primary-dark: #1e40af;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --text: #374151;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #7f7fd5 0%, #86a8e7 0%, #91eae4 100%);
+            color: #303c6c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.0rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+       .about-image {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+};
+        
+
+        /* Skills Section */
+        .skills {
+            background: var(--light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #7f7fd5 0%, #86a8e7 0%, #91eae4 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, #7f7fd5 0%, #86a8e7 0%, #91eae4 100%);
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .role {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .duration {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #7f7fd5 0%, #86a8e7 0%, #91eae4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .hero {
+                margin-top: 50px;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">RR | Ronilyn Rodas</div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('skills')">Skills</a></li>
+                <li><a onclick="scrollToSection('experience')">Experience</a></li>
+                <li><a onclick="scrollToSection('projects')">Projects</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1> <> <br>
+                Aspiring Front End WebDev & <br> IT Professional </h1> <br>
+            <p>Hi! I am Ronilyn Rodas. I am a results-oriented aspiring IT professional with a BSIT foundation, specializing in front-end web development (HTML, CSS, JavaScript) and core infrastructure skills, including Active Directory/Azure AD and PC troubleshooting.
+
+With over five years of experience as a contact center professional and was a Subject Matter Expert (SME) in the BPO industry, I uniquely bridge technical proficiency with exceptional client communication. This background ensures every project is approached with both digital acumen and a strong focus on the user experience.
+<br>
+Explore my work to see how I translate technical expertise into successful outcomes.</p>
+            <button class="cta-button" onclick="scrollToSection('projects')">View My Work</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>A Little Bit About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Background</h3>
+                <p>With a Bachelor of Science in Information Technology, I've developed a strong foundation in both technical and customer-facing roles. My journey spans from frontline customer service to technical expertise.</p>
+                <p>I'm passionate about creating intuitive web experiences and solving technical challenges. My diverse background in the BPO industry has honed my communication skills and attention to detail.</p>
+                <h3>What I Do</h3>
+                <p>I specialize in front-end web development, IT troubleshooting, Cloud computing and customer support. I'm committed to continuous learning and staying updated with the latest technologies.</p>
+            </div>
+            <div class="about-image">
+                <div class="about-image">
+<img src="rowni.jpg" alt="Ronilyn Rodas" class="responsive-img">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+               <div class="skill-icon">◆</div>
+                <h3>Front-End Development </h3>
+                <p>HTML, CSS, JavaScript - Creating responsive and interactive web interfaces</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⬚</div>
+                <h3>Programming</h3>
+                <p>C# and Java - Building robust applications and solutions</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>IT Troubleshooting</h3>
+                <p>PC and web browser support - Resolving technical issues efficiently</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">☎</div>
+                <h3>Customer Support</h3>
+                <p>5+ years of BPO experience with excellent communication skills</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-item">
+            <h3>Subject Matter Expert & Customer Service Agent</h3>
+            <div class="role"> Sykes | Capital One Canada </div>
+            <div class="duration">2019-2021</div>
+            <p>Experienced Subject Matter Expert skilled in managing critical financial compliance and customer service functions within regulated environments. Proven ability to handle the end-to-end processing of credit card applications, rigorously ensuring adherence to Know Your Customer (KYC) and regulatory requirements. Expertly provided comprehensive account support, resolving complex monthly billing and statement inquiries. Furthermore, delivered effective Tier 1 technical assistance for online banking platforms, successfully troubleshooting customer issues and guiding users through digital processes to ensure seamless service access.</p>
+        </div>
+        <div class="experience-item">
+            <h3>Email & Chat Support Specialist</h3>
+            <div class="role">Financial Technology - US </div>
+            <div class="duration">2021-2024</div>
+            <p>Highly proficient specialist in Fintech Operations and Regulatory Compliance within cryptocurrency exchange environments. Expertise includes the meticulous execution of Know Your Customer (KYC) protocols, requiring precise verification and validation of customer identity documentation. Excels in technical support, effectively resolving complex customer inquiries and concerns related to the sending and receiving of digital assets on the exchange platform. Proven ability to conduct granular blockchain transaction validation by accurately locating and reviewing wallet addresses and transaction data to confirm fund transfers..</p>
+        </div>
+        <div class="experience-item">
+            <h3>Aspiring IT Professional</h3>
+            <div class="role"> Bachelor's Degree in Information Technology | PLMar Graduate </div>
+            <div class="duration">2014 - 2019</div>
+            <p>Providing IT support, troubleshooting, and technical solutions. Managing user access through Active Directory and Azure AD implementations.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"><img src="task.png" alt="Tasks" class="responsive-img"> </div>
+                <div class="project-content">
+                    <h3>My Today's Task</h3>
+                    <p>Created modern, responsive To-Do Tasks website using HTML, CSS, and JavaScript with mobile-first approach.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <br> <center>
+                    <a href="MyTask.html" button class="cta-button">Visit Work</a>
+                </div> </center>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🎮</div>
+                <div class="project-content">
+                    <h3>Interactive Applications</h3>
+                    <p>Developed interactive web applications with dynamic user interfaces and smooth animations.</p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">DOM</span>
+                        <span class="tag">UX</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">⚙️</div>
+                <div class="project-content">
+                    <h3>System Administration</h3>
+                    <p>Managed IT infrastructure, user access, and security implementations using Active Directory and Azure.</p>
+                    <div class="project-tags">
+                        <span class="tag">Active Directory</span>
+                        <span class="tag">Azure AD</span>
+                        <span class="tag">IT Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <p>I'm always interested in hearing about new opportunities and projects. Feel free to reach out!</p>
+            <div class="social-links">
+                <a href="https://mail.google.com/mail/u/0/?pli=1#inbox?compose=new" class="social-link" title="Email">✉️</a>
+                <a href="https://www.linkedin.com/in/ronilyn-rodas-79178b183/" class="social-link" title="LinkedIn">in</a>
+                <a href="https://github.com/ronilynrodas/My-Web-Portfolio" class="social-link" title="GitHub">⚙️</a>
+                <a href="https://twitter.com" class="social-link" title="Twitter">𝕏</a>
+            </div>
+            <button class="cta-button" onclick="contactMe()">Send Me an Email</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ronilyn Rodas. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scroll to sections
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                navLinks.classList.remove('active');
+            }
+        }
+
+        // Contact function
+        function contactMe() {
+            window.location.href = 'mailto:ronilyn@example.com?subject=Portfolio Inquiry';
+        }
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all skill cards and project cards
+        document.querySelectorAll('.skill-card, .project-card, .experience-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
