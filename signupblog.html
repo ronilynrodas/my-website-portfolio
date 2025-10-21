@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - She Writes About..</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gradient: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+            --primary-dark: #2a7b9b;
+            --primary-light: #57c785;
+            --accent: #eddd53;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: Trebuchet MS;
+            background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .signup-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            max-width: 450px;
+            width: 100%;
+            padding: 3rem 2rem;
+        }
+
+        .signup-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .signup-header h1 {
+            font-size: 2rem;
+            background-image: linear-gradient(to top, #c71d6f 0%, #d09693 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-header p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Social Login Buttons */
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary-dark);
+            background: var(--bg-light);
+            transform: translateY(-2px);
+        }
+
+        .facebook-btn {
+            border-color: #1877f2;
+            color: #1877f2;
+        }
+
+        .facebook-btn:hover {
+            background: rgba(24, 119, 242, 0.05);
+        }
+
+        .email-btn {
+            border-color: var(--primary-dark);
+            color: var(--primary-dark);
+        }
+
+        .email-btn:hover {
+            background: rgba(42, 123, 155, 0.05);
+        }
+
+        .social-icon {
+            font-size: 1.3rem;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .divider span {
+            padding: 0 1rem;
+        }
+
+        /* Form Styles */
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            padding: 0.9rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: cursive;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-dark);
+            box-shadow: 0 0 0 3px rgba(42, 123, 155, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-light);
+        }
+
+        .password-strength {
+            display: flex;
+            gap: 0.3rem;
+            margin-top: 0.3rem;
+        }
+
+        .strength-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .strength-bar.weak {
+            background: #ff6b6b;
+        }
+
+        .strength-bar.medium {
+            background: #ffd93d;
+        }
+
+        .strength-bar.strong {
+            background: var(--primary-light);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: var(--primary-dark);
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .checkbox-group a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+            font-family: cursive;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Login Link */
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .login-link a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .signup-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .social-btn {
+                padding: 0.9rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Header -->
+        <div class="signup-header">
+            <h1>Join Us</h1>
+            <p>Create your account and start exploring amazing stories</p>
+        </div>
+
+        <!-- Social Login Options -->
+        <div class="social-login">
+            <button class="social-btn facebook-btn" onclick="loginWithFacebook()">
+                <span class="social-icon">f</span>
+                <span>Continue with Facebook</span>
+            </button>
+            <button class="social-btn email-btn" onclick="toggleEmailForm()">
+                <span class="social-icon">✉</span>
+                <span>Continue with Email</span>
+            </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider">
+            <span>or register with email</span>
+        </div>
+
+        <!-- Registration Form -->
+        <form class="signup-form" id="signupForm" onsubmit="handleSignup(event)">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a strong password" required oninput="checkPasswordStrength()">
+                <div class="password-strength">
+                    <div class="strength-bar" id="bar1"></div>
+                    <div class="strength-bar" id="bar2"></div>
+                    <div class="strength-bar" id="bar3"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+            </div>
+
+            <!-- Terms & Conditions -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="#" onclick="return false;">Terms of Service</a> and <a href="#" onclick="return false;">Privacy Policy</a></label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Subscribe to our newsletter for updates and exclusive content</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Create Account</button>
+        </form>
+
+        <!-- Login Link -->
+        <div class="login-link">
+            Already have an account? <a href="#" onclick="return false;">Sign In</a>
+        </div>
+    </div>
+
+    <script>
+        // Check password strength
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const bars = [
+                document.getElementById('bar1'),
+                document.getElementById('bar2'),
+                document.getElementById('bar3')
+            ];
+
+            // Reset bars
+            bars.forEach(bar => {
+                bar.classList.remove('weak', 'medium', 'strong');
+            });
+
+            if (password.length === 0) return;
+
+            let strength = 0;
+
+            // Check length
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+
+            // Check for uppercase, lowercase, numbers, special chars
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+            // Apply strength indicator
+            if (strength <= 2) {
+                bars[0].classList.add('weak');
+            } else if (strength <= 3) {
+                bars[0].classList.add('medium');
+                bars[1].classList.add('medium');
+            } else {
+                bars[0].classList.add('strong');
+                bars[1].classList.add('strong');
+                bars[2].classList.add('strong');
+            }
+        }
+
+        // Toggle email form visibility
+        function toggleEmailForm() {
+            const form = document.getElementById('signupForm');
+            form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        // Facebook login
+        function loginWithFacebook() {
+            alert('Facebook login integration would be implemented here. Redirecting to Facebook OAuth...');
+            // In production: window.location.href = 'https://www.facebook.com/v12.0/dialog/oauth?...';
+        }
+
+        // Handle form submission
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const terms = document.getElementById('terms').checked;
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            // Validate terms
+            if (!terms) {
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                return;
+            }
+
+            // Success message
+            alert(`Welcome ${fullname}! Your account has been created successfully. Check your email for verification.`);
+            document.getElementById('signupForm').reset();
+            checkPasswordStrength();
+        }
+    </script>
+</body>
+</html>

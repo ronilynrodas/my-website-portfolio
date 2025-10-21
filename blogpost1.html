@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raising Awareness to Become Help-Concious</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: var(--primary-light);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+        }
+
+        /* Featured Image */
+        .featured-image {
+            width: 100%;
+            height: 400px;
+           background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('thumb.png');
+    background-size: cover;
+    background-position: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Article Content */
+        .article-content {
+            margin-bottom: 3rem;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .article-content h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .highlight-box {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-light);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+            color: var(--primary-dark);
+        }
+
+        /* Article Footer */
+        .article-footer {
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            padding: 2rem 0;
+            margin: 3rem 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .share-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            color: var(--text-dark);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .share-btn:hover {
+            background: var(--primary-light);
+            color: white;
+            border-color: var(--primary-light);
+        }
+
+        /* Author Box */
+        .author-box {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .author-avatar-large {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--gradient);
+            flex-shrink: 0;
+        }
+
+        .author-info h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .follow-btn {
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .follow-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Related Posts */
+        .related-posts {
+            margin: 3rem 0;
+        }
+
+        .related-posts h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .post-card {
+            background: var(--bg-light);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .post-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+        }
+
+        .post-card-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+        }
+
+        .post-card-content {
+            padding: 1.5rem;
+        }
+
+        .post-card-category {
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-card-date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin: 3rem 0;
+        }
+
+        .comments-section h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .comment-form {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .comment {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .comment-text {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Article Header -->
+        <div class="article-header">
+            <span class="article-category">Lifestyle</span>
+            <h1 class="article-title">Raising Awareness to Become Health Concious in Late 20's</h1>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <div class="author-avatar"></div>
+                    <span>Ronilyn Rodas</span>
+                </div>
+                <div class="meta-item">October 21, 2025</div>
+                <div class="meta-item">⏱ 8 min read</div>
+            </div>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="featured-image"></div>
+
+        <!-- Article Content -->
+        <div class="article-content">
+            Iced coffee? Fast food? Soft drinks? Sweets? Who wouldn't say no to these foods and drinks? <br>
+
+Not you, not your best friend, and not your family. Not your colleagues. And not even me. <br>
+
+As for me, I love drinking iced coffee at any time of day. When it's morning and I have a day off, I enjoy drinking hot coffee, typically instant coffee. It's also strange because when I started earning money, I craved fast food too much. When I left the office, I noticed that there were fast-food restaurants everywhere. And every time I feel hungry, I always go to fast-food restaurants. I eat French fries, spaghetti, and chicken. Then I always upgrade the size of fries and soft drinks to large. I don't have time for exercise, and I sleep very late. It's not helpful that my work schedule is for the night shift. I crave eating more at night. Perhaps it's because of the stress I'm feeling. At home, I prefer to eat canned or processed foods instead of fish with soup or vegetables.
+
+These unhealthy eating habits are extremely concerning. Until one day, I became aware of the importance of taking care of myself. My father is advising me to stop eating fast food and dining at all-you-can-eat restaurants because it's costly and unhealthy. Suddenly, I became health-conscious because it was evident in my body figure that I was unhealthy. I have gained some belly fat, and it's starting to frustrate me, especially when I wear crop tops and dresses. I looked pregnant, but I am not.
+
+I started searching and watching videos on "how to get rid of belly fat" and "tips on how to lose weight." <br>
+
+I discovered that having excess belly fat can lead to diseases such as heart disease and type 2 diabetes, which is alarming to consider. I suddenly noticed my mother's condition.
+
+She has been taking maintenance medication for her diabetes for six years now.
+
+Trust me, I understand how challenging it can be to manage a chronic illness. 
+<br>
+Managing our illness is challenging. We will need to allocate our weekly or monthly budget to buying medications. We will need to change our lifestyle and routines. Depending on the type of illness we have, some may require monthly checkups, while others may require immediate attention.
+
+My mother has diabetes and its complications. As the daughter of a diabetic parent, I need to pay close attention to my mother's health. I need to know her daily eating and diet plans. I need to buy her diabetes and stroke medications. I allocate a portion of my monthly income to purchase her maintenance medications. I need to be at home with her all the time. I can't go on vacation for a week or three days because I need to take care of my mother.
+
+<br>
+Two months ago, she had a stroke that left her left side paralyzed. Taking care of my mother, who suffered a stroke that left her paralyzed, is not easy. She has a tendency to experience emotional fluctuations, including periods of depression. Despite our best efforts, I still hear her say, "I wish I had died," which is very difficult for us to hear. I understand that her current situation is extremely difficult. And our family needs to be stronger than ever. We need to understand her and be more patient with her.
+
+Sometimes, I hear her say, "I wish I could turn back time." I asked why, and she told me that she should have paid more attention to her health. She wishes she had not smoked before.
+
+<br>
+I remember when I was a kid, my mother used to eat a lot. She enjoys drinking soft drinks and juice. She smokes, which is really bad for her health. She loves to cook more than one dish every day. One cup of rice is not sufficient; she consumes more than one cup. My classmates from elementary school often described my mother as overweight or obese.
+
+I was in college when she found out that she had type 2 diabetes. The rest is history. Now, she is recovering from an ischemic stroke, and her doctor recommended a low-fat and low-salt diet for her.
+
+<br>
+I researched stroke, including its types, recovery, and prevention methods. I simply want to help my mother recover from a stroke. I also discovered that strokes can occur in people of young ages, although it's rare.
+
+I learned that most risk factors for stroke in young adults are similar to those in older adults, such as high blood pressure, heavy drinking, diabetes, high cholesterol, and obesity.
+
+<br>
+It's scary to think that even at 27 years old, I could be at risk of developing diabetes or having a stroke. This is why, gradually, I began to adjust my eating habits and change my lifestyle.
+
+I still drink coffee, but I prefer brewing coffee over instant coffee when I need to wake myself up before starting my shift at work. Based on my research, consuming instant foods more than twice a week could increase the risk of heart disease, diabetes, and even cancer. This also applies to consuming meals at fast food restaurants and processed foods such as hotdogs, ham, and canned goods.
+
+<br>
+It's challenging to change my unhealthy eating habits because I find it addictive to consume fast food, hotdogs, bacon, meatloaf, corned beef, and to drink instant coffee and soft drinks.
+
+In addition to cutting back on unhealthy foods, I have also begun exercising by taking brisk 30-minute walks at least three times a week. I became selective when I went to grocery stores because I carefully examined food labels before making a purchase.
+
+I researched the benefits of drinking green tea and discovered that in addition to aiding in fat burning, it can also help protect against heart disease by promoting healthy cholesterol levels. So, I decided to switch to green tea as an alternative to coffee.
+
+<br>
+My colleagues at the office say I'm too young to be concerned about my health. I tell them that it's better to be health-conscious at a young age than to regret it later, as my mother regretted her unhealthy lifestyle before.
+
+There are numerous concerns in life, including monthly expenses, work commitments, career aspirations, and future plans. All the hard work we're doing today will be for nothing if we unexpectedly get sick. If we neglect our health today, illness may become a barrier to achieving our goals.
+
+This is why I believe that being healthy is wealth.
+
+I believe it's important to prioritize our health from a young age by taking better care of ourselves.. </p>
+        </div>
+
+        <!-- Article Footer -->
+        <div class="article-footer">
+            <div class="tags">
+                <span class="tag">Balance</span>
+                <span class="tag">Lifestyle</span>
+                <span class="tag">Self-Care</span>
+                <span class="tag">Women's Empowerment</span>
+                <span class="tag">Personal Growth</span>
+            </div>
+     
+
+
+
+    
+</body>
+</html>
