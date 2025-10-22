@@ -192,8 +192,8 @@
         }
 
         .hero-avatar img {
-            width: 100%;
-            height: 100%;
+            width: 150%;
+            height: 150%;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -514,7 +514,7 @@
 
         /* Contact Section */
         .contact {
-            background: var(--light);
+            background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
             text-align: center;
         }
 
@@ -526,7 +526,7 @@
         .contact-content p {
             font-size: 1.1rem;
             margin-bottom: 2.5rem;
-            color: var(--text-light);
+            color: black;
             line-height: 1.8;
         }
 
@@ -563,8 +563,8 @@
 
         /* Footer */
         footer {
-            background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
-            color: var(--white);
+            background-image: linear-gradient(to top, #ff9a9e 99%, #fecfef 0%, #fecfef 100%);
+            color: black;
             text-align: center;
             padding: 2rem;
             font-size: 0.95rem;
@@ -926,6 +926,259 @@ Explore my work to see technical proficiency translated into successful outcomes
             </div>
 </section>
 
+<section class="slideshow-section" id="artworks">
+    <h2>Artwork Showcase</h2>
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <img src="art1.png" alt="Artwork 1">
+            <div class="slide-caption"></div>
+        </div>
+        <div class="slide fade">
+            <img src="art2.png" alt="Artwork 2">
+            <div class="slide-caption"></div>
+        </div>
+        <div class="slide fade">
+            <img src="art3.png" alt="Artwork 3">
+            <div class="slide-caption"></div>
+        </div>
+        <div class="slide fade">
+            <img src="art4.png" alt="Artwork 4">
+            <div class="slide-caption"></div>
+        </div>
+        <div class="slide fade">
+            <img src="art5.png" alt="Artwork 5">
+            <div class="slide-caption"></div>
+        </div>
+
+        
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+</section>
+
+<style>
+
+.slideshow-section {
+    background: var(--light);
+}
+
+.slideshow-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.slide {
+    display: none;
+    position: relative;
+    width: 100%;
+    animation: fadeEffect 1s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: var(--white);
+    padding: 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.slide.fade {
+    display: none;
+}
+
+.slide.fade.active {
+    display: block;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    padding: 0;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    background: rgba(233, 69, 96, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    z-index: 10;
+}
+
+.prev:hover, .next:hover {
+    background: var(--highlight);
+    transform: scale(1.1);
+}
+
+.prev {
+    left: 15px;
+}
+
+.next {
+    right: 15px;
+}
+
+
+.dots-container {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--white);
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--highlight);
+}
+
+.dot:hover {
+    background-color: var(--accent);
+}
+
+
+@media (max-width: 768px) {
+    .slide img {
+        height: 350px;
+    }
+
+    .prev, .next {
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+        font-size: 18px;
+    }
+
+    .slide-caption {
+        padding: 1.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide img {
+        height: 250px;
+    }
+
+    .prev, .next {
+        width: 35px;
+        height: 35px;
+        margin-top: -17.5px;
+        font-size: 16px;
+    }
+
+    .slide-caption {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+    }
+}
+</style>
+
+<script>
+let slideIndex = 1;
+let slideTimer;
+
+
+showSlide(slideIndex);
+autoSlide();
+
+function changeSlide(n) {
+    clearTimeout(slideTimer);
+    showSlide(slideIndex += n);
+    autoSlide();
+}
+
+function currentSlide(n) {
+    clearTimeout(slideTimer);
+    showSlide(slideIndex = n);
+    autoSlide();
+}
+
+function showSlide(n) {
+    const slides = document.getElementsByClassName('slide');
+    const dots = document.getElementsByClassName('dot');
+
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+    }
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+    }
+
+    slides[slideIndex - 1].classList.add('active');
+    dots[slideIndex - 1].classList.add('active');
+}
+
+function autoSlide() {
+    slideTimer = setTimeout(() => {
+        slideIndex++;
+        showSlide(slideIndex);
+        autoSlide();
+    }, 5000); 
+}
+</script>
             
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -1007,5 +1260,4 @@ Explore my work to see technical proficiency translated into successful outcomes
         });
     </script>
 </body>
-
 </html>
