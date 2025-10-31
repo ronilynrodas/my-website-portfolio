@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibiza Subdivision - San Mateo </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #dda15e;
+      --secondary-color: #bc6c25;
+      --accent-color: #606c38;
+      --text-dark: #2c3e50;
+      --text-light: #ecf0f1;
+      --border-color: #bdc3c7;
+      --hover-color: #283618;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    
+    nav {
+      background-color: #bc6c25;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .logo span {
+      font-size: 28px;
+      color: var(--secondary-color);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: #283618;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #283618;
+     
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #283618;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #283618;
+      color: var(--text-dark);
+    }
+
+    .dropdown-item {
+      position: relative;
+    }
+
+    .dropdown-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .login-btn {
+      background-color: #fefae0;
+      color: var(--text-dark);
+      padding: 10px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #606c38;
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-light);
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    
+    .hero {
+      background-image: url('ibizuh.jpg');
+       background-size: cover;
+    background-position: center;
+min-height: 80vh;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1, 
+.hero-content p {
+    color: white;
+    text-shadow: 2px 2px 4px #000000; /* Adds contrast to the text */
+}
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.1;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #fefae0;
+      color: var(--text-dark);
+      padding: 14px 40px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background-color: #606c38;
+      color: var(--text-light);
+      transform: translateY(-3px);
+    }
+
+   
+    .hero-image {
+      max-width: 1200px;
+      margin: 50px auto 0;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+   
+    .featured {
+      padding: 80px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .featured h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: var(--text-dark);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .featured-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .featured-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .featured-card-content {
+      padding: 20px;
+    }
+
+    .featured-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .featured-card p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .featured-card-price {
+      color: var(--secondary-color);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .featured-card-btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .featured-card-btn:hover {
+      background-color: var(--primary-color);
+    }
+
+   
+    footer {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h4 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section ul li a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--secondary-color);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(236, 240, 241, 0.2);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(236, 240, 241, 0.8);
+    }
+
+    
+    @media screen and (max-width: 768px) {
+      .nav-menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--primary-color);
+        display: none;
+        gap: 0;
+        padding: 20px 0;
+        border-top: 1px solid rgba(236, 240, 241, 0.2);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-menu a {
+        padding: 12px 20px;
+        display: block;
+        width: 100%;
+      }
+
+      .nav-menu a::after {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .featured h2 {
+        font-size: 28px;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="navbar-container">
+      <a href="#" class="logo">
+        <span></span> Ibiza Subdivision
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#properties">Properties</a></li>
+        <li class="dropdown-item">
+          <a href="#marketplace">Marketplace</a>
+          <div class="dropdown-menu">
+            <a href="#foods">Foods & Groceries</a>
+            <a href="#supplies">Supplies</a>
+            <a href="#accessories">Accessories</a>
+            <a href="#appliances">Appliances</a>
+            <a href="#gadgets">Gadgets</a>
+          </div>
+        </li>
+        <li class="dropdown-item">
+          <a href="#services">Services</a>
+          <div class="dropdown-menu">
+            <a href="#rentals">Rentals</a>
+            <a href="#sell">Sell Properties</a>
+            <a href="#maintenance">Maintenance</a>
+          </div>
+        </li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><button class="login-btn" onclick="alert('Login functionality coming soon!')">Login</button></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome to Ibiza Subdivision</h1>
+      <p>Our Home. Our Community. We are One.</p>
+      <button class="cta-button" onclick="alert('Explore properties!')">Explore Now</button>
+    </div>
+  </section>
+
+  
+  <section class="featured" id="properties">
+    <h2>Featured </h2>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img src="/placeholder.svg?height=200&width=300" alt="Property 1">
+        <div class="featured-card-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </h3></p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <img src="/placeholder.svg?height=200&width=300" alt="Property 2">
+        <div class="featured-card-content">
+          <h3>Lorem Ipsum</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+
+     
+      </div>
+    </div>
+  </section>
+
+ 
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Ibiza</h4>
+          <p style="font-size: 14px; line-height: 1.6; color: rgba(236, 240, 241, 0.9);">
+            Ibiza Subdivision is a residential living with a focus on community, sustainability, and modern design.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#marketplace">Marketplace</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="#community">Community Forum</a></li>
+            <li><a href="#contact">Support Center</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <ul>
+            <li> +639 204 394-952</li>
+            <li>Ibiza Townhomes, Brgy Malanday, San Mateo Rizal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ibiza Subdivision. All rights reserved. | <a href="#privacy" style="color: var(--secondary-color); text-decoration: none;">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
