@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> My Task To-do Today</title>
+    <title>My Task To-do Today</title>
     <header> 
         
     </header>
@@ -16,12 +16,30 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            background-image: url('cityvieww.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .container {
@@ -31,6 +49,9 @@
             width: 100%;
             max-width: 500px;
             padding: 30px;
+            
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
@@ -64,12 +85,12 @@
 
         #todoInput:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #6aa84f;
         }
 
         #addBtn {
             padding: 12px 25px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #6aa84f;
             color: white;
             border: none;
             border-radius: 8px;
@@ -105,7 +126,7 @@
         .stat-number {
             font-size: 1.5em;
             font-weight: bold;
-            color: #667eea;
+            color: #6aa84f;
         }
 
         .stat-label {
@@ -217,6 +238,13 @@
             cursor: not-allowed;
         }
 
+        /* <CHANGE> Enhanced responsive design for full-screen background */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+        }
+
         @media (max-width: 480px) {
             .container {
                 padding: 20px;
@@ -229,6 +257,10 @@
             .stats {
                 flex-direction: column;
                 gap: 10px;
+            }
+
+            body {
+                background-attachment: scroll;
             }
         }
     </style>
@@ -270,7 +302,7 @@
         <ul id="todoList"></ul>
 
         <div id="emptyState" class="empty-state">
-            <div class="empty-state-icon">✨</div>
+            <div class="empty-state-icon"></div>
             <p>No tasks yet. Add one to get started!</p>
         </div>
 
@@ -289,10 +321,10 @@
 
         let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-        // Render todos on page load
+        
         renderTodos();
 
-        // Add event listeners
+       
         addBtn.addEventListener('click', addTodo);
         todoInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') addTodo();
