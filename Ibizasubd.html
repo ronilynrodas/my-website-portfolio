@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="house.png">
   <title>Ibiza Subdivision - San Mateo </title>
   <style>
     * {
@@ -147,6 +148,26 @@
       transform: translateY(-2px);
     }
 
+    .signup-btn {
+      background-color: var(--accent-color);
+      color: var(--text-light);
+      padding: 10px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .signup-btn:hover {
+      background-color: #fefae0;
+      color: var(--text-dark);
+      transform: translateY(-2px);
+    }
+
     .hamburger {
       display: none;
       flex-direction: column;
@@ -172,6 +193,204 @@
 
     .hamburger.active span:nth-child(3) {
       transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 450px;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      font-size: 24px;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--text-dark);
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: var(--secondary-color);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 14px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 5px rgba(188, 108, 37, 0.3);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .submit-btn {
+      flex: 1;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--hover-color);
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+
+    .toggle-link a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .toggle-link a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      padding: 12px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .user-info {
+      background-color: #d4edda;
+      padding: 12px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: none;
+    }
+
+    .user-info.active {
+      display: block;
+    }
+
+    .logout-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .logout-btn:hover {
+      background-color: #c82333;
     }
 
     
@@ -446,6 +665,16 @@ min-height: 80vh;
       .featured-grid {
         grid-template-columns: 1fr;
       }
+
+      .signup-btn {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .modal-content {
+        width: 95%;
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
@@ -480,7 +709,15 @@ min-height: 80vh;
         <li><a href="#community">Community</a></li>
         <li><a href="#contact">Contact Us</a></li>
         <li><a href="#faqs">FAQs</a></li>
-        <li><button class="login-btn" onclick="alert('Login functionality coming soon!')">Login</button></li>
+        <!-- Updated login button and added signup button with modal triggers -->
+        <li id="auth-buttons">
+          <button class="login-btn" onclick="openLoginModal()">Login</button>
+          <button class="signup-btn" onclick="openSignupModal()">Sign Up</button>
+        </li>
+        <li id="user-menu" style="display: none;">
+          <span id="welcome-text" style="color: white; margin-right: 15px;"></span>
+          <button class="login-btn logout-btn" onclick="logout()">Logout</button>
+        </li>
       </ul>
       <div class="hamburger" id="hamburger">
         <span></span>
@@ -489,6 +726,76 @@ min-height: 80vh;
       </div>
     </div>
   </nav>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Login</h2>
+        <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+      </div>
+      <div id="loginMessage"></div>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">Login</button>
+        </div>
+      </form>
+      <div class="toggle-link">
+        Don't have an account? <a onclick="switchToSignup()">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Sign Up</h2>
+        <button class="close-btn" onclick="closeSignupModal()">&times;</button>
+      </div>
+      <div id="signupMessage"></div>
+      <form id="signupForm" onsubmit="handleSignup(event)">
+        <div class="form-group">
+          <label for="signup-firstname">First Name</label>
+          <input type="text" id="signup-firstname" name="first_name" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-lastname">Last Name</label>
+          <input type="text" id="signup-lastname" name="last_name" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input type="text" id="signup-username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-phone">Phone Number</label>
+          <input type="tel" id="signup-phone" name="phone_number" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" name="password" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">Sign Up</button>
+        </div>
+      </form>
+      <div class="toggle-link">
+        Already have an account? <a onclick="switchToLogin()">Login</a>
+      </div>
+    </div>
+  </div>
 
   
   <section class="hero" id="home">
@@ -587,6 +894,124 @@ min-height: 80vh;
         navMenu.classList.remove('active');
       });
     });
+
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.remove('active');
+      document.getElementById('loginMessage').innerHTML = '';
+    }
+
+    function openSignupModal() {
+      document.getElementById('signupModal').classList.add('active');
+    }
+
+    function closeSignupModal() {
+      document.getElementById('signupModal').classList.remove('active');
+      document.getElementById('signupMessage').innerHTML = '';
+    }
+
+    function switchToLogin() {
+      closeSignupModal();
+      openLoginModal();
+    }
+
+    function switchToSignup() {
+      closeLoginModal();
+      openSignupModal();
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      if (event.target == loginModal) {
+        loginModal.classList.remove('active');
+      }
+      if (event.target == signupModal) {
+        signupModal.classList.remove('active');
+      }
+    };
+
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+
+      fetch('login.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        const messageDiv = document.getElementById('loginMessage');
+        if (data.status === 'success') {
+          messageDiv.innerHTML = `<div class="message success">${data.message}</div>`;
+          document.getElementById('loginForm').reset();
+          setTimeout(() => {
+            closeLoginModal();
+            updateUserMenu(username);
+          }, 1500);
+        } else {
+          messageDiv.innerHTML = `<div class="message error">${data.message}</div>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('loginMessage').innerHTML = `<div class="message error">An error occurred. Please try again.</div>`;
+      });
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      const formData = new FormData(document.getElementById('signupForm'));
+
+      fetch('signup.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        const messageDiv = document.getElementById('signupMessage');
+        if (data.status === 'success') {
+          messageDiv.innerHTML = `<div class="message success">${data.message}</div>`;
+          document.getElementById('signupForm').reset();
+          setTimeout(() => {
+            closeSignupModal();
+            openLoginModal();
+          }, 1500);
+        } else {
+          messageDiv.innerHTML = `<div class="message error">${data.message}</div>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('signupMessage').innerHTML = `<div class="message error">An error occurred. Please try again.</div>`;
+      });
+    }
+
+    function updateUserMenu(username) {
+      document.getElementById('auth-buttons').style.display = 'none';
+      document.getElementById('user-menu').style.display = 'block';
+      document.getElementById('welcome-text').textContent = `Welcome, ${username}!`;
+    }
+
+    function logout() {
+      fetch('logout.php')
+      .then(() => {
+        document.getElementById('user-menu').style.display = 'none';
+        document.getElementById('auth-buttons').style.display = 'block';
+        document.getElementById('loginForm').reset();
+        document.getElementById('signupForm').reset();
+        alert('You have been logged out successfully!');
+      });
+    }
   </script>
 </body>
 </html>
