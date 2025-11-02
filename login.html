@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="house.png">
+  <title>Ibiza Subdivision - San Mateo </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #dda15e;
+      --secondary-color: #bc6c25;
+      --accent-color: #606c38;
+      --text-dark: #2c3e50;
+      --text-light: #ecf0f1;
+      --border-color: #bdc3c7;
+      --hover-color: #283618;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    
+    nav {
+      background-color: #bc6c25;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .logo span {
+      font-size: 28px;
+      color: var(--secondary-color);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: #283618;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #283618;
+     
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #283618;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #283618;
+      color: var(--text-dark);
+    }
+
+    .dropdown-item {
+      position: relative;
+    }
+
+    .dropdown-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .login-btn {
+      background-color: #fefae0;
+      color: var(--text-dark);
+      padding: 10px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #606c38;
+      transform: translateY(-2px);
+    }
+
+    .signup-btn {
+      background-color: var(--accent-color);
+      color: var(--text-light);
+      padding: 10px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .signup-btn:hover {
+      background-color: #fefae0;
+      color: var(--text-dark);
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-light);
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 450px;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 15px;
+    }
+
+    .modal-header h2 {
+      font-size: 24px;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--text-dark);
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: var(--secondary-color);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 14px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 5px rgba(188, 108, 37, 0.3);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .submit-btn {
+      flex: 1;
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: var(--hover-color);
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+
+    .toggle-link a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .toggle-link a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      padding: 12px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .user-info {
+      background-color: #d4edda;
+      padding: 12px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: none;
+    }
+
+    .user-info.active {
+      display: block;
+    }
+
+    .logout-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .logout-btn:hover {
+      background-color: #c82333;
+    }
+
+    
+    .hero {
+      background-image: url('ibizuh.jpg');
+       background-size: cover;
+    background-position: center;
+min-height: 80vh;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1, 
+.hero-content p {
+    color: white;
+    text-shadow: 2px 2px 4px #000000; /* Adds contrast to the text */
+}
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.1;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #fefae0;
+      color: var(--text-dark);
+      padding: 14px 40px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background-color: #606c38;
+      color: var(--text-light);
+      transform: translateY(-3px);
+    }
+
+   
+    .hero-image {
+      max-width: 1200px;
+      margin: 50px auto 0;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+   
+    .featured {
+      padding: 80px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .featured h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: var(--text-dark);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .featured-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .featured-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .featured-card-content {
+      padding: 20px;
+    }
+
+    .featured-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .featured-card p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .featured-card-price {
+      color: var(--secondary-color);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .featured-card-btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .featured-card-btn:hover {
+      background-color: var(--primary-color);
+    }
+
+   
+    footer {
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-section h4 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section ul li a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--secondary-color);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(236, 240, 241, 0.2);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(236, 240, 241, 0.8);
+    }
+
+    
+    @media screen and (max-width: 768px) {
+      .nav-menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: var(--primary-color);
+        display: none;
+        gap: 0;
+        padding: 20px 0;
+        border-top: 1px solid rgba(236, 240, 241, 0.2);
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-menu a {
+        padding: 12px 20px;
+        display: block;
+        width: 100%;
+      }
+
+      .nav-menu a::after {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .featured h2 {
+        font-size: 28px;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .signup-btn {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .modal-content {
+        width: 95%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="navbar-container">
+      <a href="#" class="logo">
+        <span></span> Ibiza Subdivision
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#properties">Properties</a></li>
+        <li class="dropdown-item">
+          <a href="#marketplace">Marketplace</a>
+          <div class="dropdown-menu">
+            <a href="#foods">Foods & Groceries</a>
+            <a href="#supplies">Supplies</a>
+            <a href="#accessories">Accessories</a>
+            <a href="#appliances">Appliances</a>
+            <a href="#gadgets">Gadgets</a>
+          </div>
+        </li>
+        <li class="dropdown-item">
+          <a href="#services">Services</a>
+          <div class="dropdown-menu">
+            <a href="#rentals">Rentals</a>
+            <a href="#sell">Sell Properties</a>
+            <a href="#maintenance">Maintenance</a>
+          </div>
+        </li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <!-- Updated login button and added signup button with modal triggers -->
+        <li id="auth-buttons">
+          <button class="login-btn" onclick="openLoginModal()">Login</button>
+          <button class="signup-btn" onclick="openSignupModal()">Sign Up</button>
+        </li>
+        <li id="user-menu" style="display: none;">
+          <span id="welcome-text" style="color: white; margin-right: 15px;"></span>
+          <button class="login-btn logout-btn" onclick="logout()">Logout</button>
+        </li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Login</h2>
+        <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+      </div>
+      <div id="loginMessage"></div>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input type="text" id="login-username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">Login</button>
+        </div>
+      </form>
+      <div class="toggle-link">
+        Don't have an account? <a onclick="switchToSignup()">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Sign Up</h2>
+        <button class="close-btn" onclick="closeSignupModal()">&times;</button>
+      </div>
+      <div id="signupMessage"></div>
+      <form id="signupForm" onsubmit="handleSignup(event)">
+        <div class="form-group">
+          <label for="signup-firstname">First Name</label>
+          <input type="text" id="signup-firstname" name="first_name" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-lastname">Last Name</label>
+          <input type="text" id="signup-lastname" name="last_name" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-username">Username</label>
+          <input type="text" id="signup-username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-phone">Phone Number</label>
+          <input type="tel" id="signup-phone" name="phone_number" required>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" name="password" required>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="submit-btn">Sign Up</button>
+        </div>
+      </form>
+      <div class="toggle-link">
+        Already have an account? <a onclick="switchToLogin()">Login</a>
+      </div>
+    </div>
+  </div>
+
+  
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Welcome to Ibiza Subdivision</h1>
+      <p>Our Home. Our Community. We are One.</p>
+      <button class="cta-button" onclick="alert('Explore properties!')">Explore Now</button>
+    </div>
+  </section>
+
+  
+  <section class="featured" id="properties">
+    <h2>Featured </h2>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img src="/placeholder.svg?height=200&width=300" alt="Property 1">
+        <div class="featured-card-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </h3></p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <img src="/placeholder.svg?height=200&width=300" alt="Property 2">
+        <div class="featured-card-content">
+          <h3>Lorem Ipsum</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+
+     
+      </div>
+    </div>
+  </section>
+
+ 
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Ibiza</h4>
+          <p style="font-size: 14px; line-height: 1.6; color: rgba(236, 240, 241, 0.9);">
+            Ibiza Subdivision is a residential living with a focus on community, sustainability, and modern design.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#marketplace">Marketplace</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="#community">Community Forum</a></li>
+            <li><a href="#contact">Support Center</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <ul>
+            <li> +639 204 394-952</li>
+            <li>Ibiza Townhomes, Brgy Malanday, San Mateo Rizal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ibiza Subdivision. All rights reserved. | <a href="#privacy" style="color: var(--secondary-color); text-decoration: none;">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.remove('active');
+      document.getElementById('loginMessage').innerHTML = '';
+    }
+
+    function openSignupModal() {
+      document.getElementById('signupModal').classList.add('active');
+    }
+
+    function closeSignupModal() {
+      document.getElementById('signupModal').classList.remove('active');
+      document.getElementById('signupMessage').innerHTML = '';
+    }
+
+    function switchToLogin() {
+      closeSignupModal();
+      openLoginModal();
+    }
+
+    function switchToSignup() {
+      closeLoginModal();
+      openSignupModal();
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      if (event.target == loginModal) {
+        loginModal.classList.remove('active');
+      }
+      if (event.target == signupModal) {
+        signupModal.classList.remove('active');
+      }
+    };
+
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+
+      fetch('login.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        const messageDiv = document.getElementById('loginMessage');
+        if (data.status === 'success') {
+          messageDiv.innerHTML = `<div class="message success">${data.message}</div>`;
+          document.getElementById('loginForm').reset();
+          setTimeout(() => {
+            closeLoginModal();
+            updateUserMenu(username);
+          }, 1500);
+        } else {
+          messageDiv.innerHTML = `<div class="message error">${data.message}</div>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('loginMessage').innerHTML = `<div class="message error">An error occurred. Please try again.</div>`;
+      });
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      const formData = new FormData(document.getElementById('signupForm'));
+
+      fetch('signup.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        const messageDiv = document.getElementById('signupMessage');
+        if (data.status === 'success') {
+          messageDiv.innerHTML = `<div class="message success">${data.message}</div>`;
+          document.getElementById('signupForm').reset();
+          setTimeout(() => {
+            closeSignupModal();
+            openLoginModal();
+          }, 1500);
+        } else {
+          messageDiv.innerHTML = `<div class="message error">${data.message}</div>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('signupMessage').innerHTML = `<div class="message error">An error occurred. Please try again.</div>`;
+      });
+    }
+
+    function updateUserMenu(username) {
+      document.getElementById('auth-buttons').style.display = 'none';
+      document.getElementById('user-menu').style.display = 'block';
+      document.getElementById('welcome-text').textContent = `Welcome, ${username}!`;
+    }
+
+    function logout() {
+      fetch('logout.php')
+      .then(() => {
+        document.getElementById('user-menu').style.display = 'none';
+        document.getElementById('auth-buttons').style.display = 'block';
+        document.getElementById('loginForm').reset();
+        document.getElementById('signupForm').reset();
+        alert('You have been logged out successfully!');
+      });
+    }
+  </script>
+</body>
+</html>
