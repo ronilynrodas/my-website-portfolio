@@ -964,6 +964,43 @@ min-height: 80vh;
             border-left: 4px solid #f5c6cb;
         }
 
+        .accordion {
+  background-color: #fefae0;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #dda15e;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
         /* Responsive Design */
         @media (max-width: 600px) {
             .inquiry-section {
@@ -1159,7 +1196,7 @@ min-height: 80vh;
        
     <div class="featured-grid">
       <div class="featured-card">
-        <img src="house2.jpg" alt="Property 2">
+        <img src="house2.JPG" alt="Property 2">
         <div class="featured-card-content">
           <h3> Modern 2-Storey Townhouse for Sale </h3>
           <h4> Price: 2M</h4>
@@ -1337,6 +1374,37 @@ Contact us today for dependable home repairs!</p>
         </div>
     </div>
 </body>
+<br>
+<br>
+<body>
+
+  <center> <h2>Frequently Asked Questions (FAQs)</h2> </center>
+<br>
+<button class="accordion"> <b>Where is Ibiza Townhomes in San Mateo located? </b> </button>
+<div class="panel">
+  <br>
+  <p>The Ibiza Townhomes is located at Brgy. Marang, Guinayang, Malanday, San Mateo, Philippines</p>
+<br>
+</div>
+
+<button class="accordion"><b> Are there any reopen or pre-selling houses? </b> </button>
+<div class="panel">
+  <br>
+  <p>If there are any reopened houses, our agents will post them here on this website. From the homepage, click Properties in the navigation bar.</p>
+<br>
+</div>
+
+<button class="accordion"> <b> How can I buy a house in Ibiza Townhomes Subdivision? </b> </button>
+<div class="panel">
+<br>
+  <p>Move into this end unit at Ibiza Townhomes, San Mateo, Rizal, with no major costs beyond the cashout. Ideal for those seeking a ready-to-move-in home in a convenient, peaceful area. Let us know by sending us an inquiry.</p>
+<br>
+</div>
+
+</body>
+
+<br>
+<br>
 
 <body>
     <section class="inquiry-section">
@@ -1356,18 +1424,18 @@ Contact us today for dependable home repairs!</p>
             <div class="form-row">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                    <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz">
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    <input type="email" id="email" name="email" required placeholder="heyyou@example.com">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                    <input type="tel" id="phone" name="phone" placeholder="+639 302 7654">
                 </div>
                 <div class="form-group">
                     <label for="subject">Subject *</label>
@@ -1427,6 +1495,29 @@ Contact us today for dependable home repairs!</p>
         });
     </script>
 </body>
+
+
+
+
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+<br>
+<br>
  
   <footer>
     <div class="footer-container">
