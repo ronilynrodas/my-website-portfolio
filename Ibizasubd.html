@@ -560,6 +560,179 @@ min-height: 80vh;
       background-color: var(--primary-color);
     }
 
+.marketplace-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .marketplace-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .marketplace-header h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .marketplace-header p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .product-info {
+            padding: 16px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #283618;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 14px;
+        }
+
+        .rating-count {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .product-footer {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 10px 12px;
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-primary {
+            flex: 1;
+            padding: 10px 12px;
+            background-color: #dda15e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #606c38;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 16px;
+            }
+
+            .marketplace-header h2 {
+                font-size: 24px;
+            }
+
+            .product-image {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marketplace-container {
+                padding: 20px 12px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .marketplace-header h2 {
+                font-size: 20px;
+            }
+
+            .marketplace-header p {
+                font-size: 14px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+        }
    
     footer {
       background-color: var(--primary-color);
@@ -674,8 +847,168 @@ min-height: 80vh;
       .modal-content {
         width: 95%;
         padding: 30px 20px;
-      }
+    } 
     }
+    .inquiry-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px 20px;
+        }
+
+        .inquiry-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .inquiry-header h2 {
+            font-size: 32px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .inquiry-header p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .inquiry-form {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+            background-color: #f0f7ff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            background-color: #dda15e;
+            color: white;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #606c38;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f5c6cb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .inquiry-section {
+                margin: 40px auto;
+                padding: 20px 15px;
+            }
+
+            .inquiry-form {
+                padding: 24px;
+            }
+
+            .inquiry-header h2 {
+                font-size: 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px 12px;
+                font-size: 16px;
+            }
+
+            .submit-btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) and (min-width: 601px) {
+            .inquiry-form {
+                padding: 30px;
+            }
+
+            .inquiry-header h2 {
+                font-size: 28px;
+            }
+          }
   </style>
 </head>
 <body>
@@ -691,7 +1024,6 @@ min-height: 80vh;
         <li class="dropdown-item">
           <a href="#marketplace">Marketplace</a>
           <div class="dropdown-menu">
-            <a href="#foods">Foods & Groceries</a>
             <a href="#supplies">Supplies</a>
             <a href="#accessories">Accessories</a>
             <a href="#appliances">Appliances</a>
@@ -801,40 +1133,300 @@ min-height: 80vh;
   <section class="hero" id="home">
     <div class="hero-content">
       <h1>Welcome to Ibiza Subdivision</h1>
-      <p>Our Home. Our Community. We are One.</p>
+      <p>Our Home. Our Community.</p>
       <button class="cta-button" onclick="alert('Explore properties!')">Explore Now</button>
     </div>
   </section>
 
   
   <section class="featured" id="properties">
-    <h2>Featured </h2>
+    <h2>Featured Townhomes</h2>
     <div class="featured-grid">
       <div class="featured-card">
-        <img src="/placeholder.svg?height=200&width=300" alt="Property 1">
+        <img src="house1.png" alt="Property 1">
         <div class="featured-card-content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h3>3 Storey Townhouse For Sale</h3>
+          <h4> Price: 8.5M</h4>
+          <p>Experience stylish and comfortable living in this beautifully designed three-storey townhouse. It features a secure garage, flexible ground-floor space, and an open-concept living and dining area with a modern kitchen. The upper floor offers spacious bedrooms, including a master suite with a private balcony. Enjoy your own terrace perfect for relaxing or entertaining. Conveniently located near schools, shops, and main roads — this home is ideal for modern urban living.</p>
           </h3></p>
           <div class="featured-card-price"></div>
           <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
         </div>
       </div>
 
+      
+
+       
+    <div class="featured-grid">
       <div class="featured-card">
-        <img src="/placeholder.svg?height=200&width=300" alt="Property 2">
+        <img src="house2.jpg" alt="Property 2">
         <div class="featured-card-content">
-          <h3>Lorem Ipsum</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+          <h3> Modern 2-Storey Townhouse for Sale </h3>
+          <h4> Price: 2M</h4>
+          <p>Discover stylish and practical living in this 2-storey townhouse featuring open-plan living and dining areas, a modern kitchen, spacious bedrooms, and a master suite with a private balcony. With a carport, patio, and a prime location near key amenities, this home offers the perfect balance of comfort and convenience.</p>
+          </h3></p>
           <div class="featured-card-price"></div>
           <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
         </div>
       </div>
-
      
       </div>
     </div>
   </section>
 
+  <section class="featured" id="properties">
+    <h2>Our Professional Services</h2>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img src="carpenter.jpeg" alt="Property 1">
+        <div class="featured-card-content">
+          <h3>House Renovation</h3>
+          <h4> Price Range: 20K - 100K</h4>
+          <p>Transform your home with our professional renovation solutions. From kitchen and bathroom upgrades to full interior and exterior makeovers, we deliver quality craftsmanship and modern design tailored to your needs. Our team ensures seamless project management, timely completion, and results that enhance both comfort and property value.
+ <br> Contact us today to bring your renovation ideas to life!</p>
+          </h3></p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+    
+      
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img src="repair.jpg" alt="Property 1">
+        <div class="featured-card-content">
+          <h3>House Repair & Plumbing Services</h3>
+          <h4> Price Range: 10K - 100K</h4>
+          <p>Keep your home in top condition with our reliable plumbing and repair services. From leak repairs and drainage maintenance to fixture replacements and general home repairs, our skilled team delivers fast, lasting solutions with quality materials and professional service.
+
+<br> 
+Contact us today for dependable home repairs!</p>
+          </h3></p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+
+      
+    </section>
+
+    <section class="featured" id="properties">
+    <h2>House Rentals and Pasalo </h2>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img src="rent1.jpg" alt="Property 1">
+        <div class="featured-card-content">
+          <h3>2-Storey House for Rent</h3>
+          <h4> Price: 8K/month</h4>
+          <p>Experience stylish and comfortable living in this beautifully designed three-storey townhouse. It features a secure garage, flexible ground-floor space, and an open-concept living and dining area with a modern kitchen. The upper floor offers spacious bedrooms, including a master suite with a private balcony. Enjoy your own terrace perfect for relaxing or entertaining. Conveniently located near schools, shops, and main roads — this home is ideal for modern urban living.</p>
+          </h3></p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+
+       
+    <div class="featured-grid">
+      <div class="featured-card">
+        <img src="pasalo.jpg" alt="Property 2">
+        <div class="featured-card-content">
+          <h3> Simple and Affordable 2-Storey House</h3>
+          <h4> Price: 6k/month</h4>
+          <p>Discover stylish and practical living in this 2-storey townhouse featuring open-plan living and dining areas, a modern kitchen, spacious bedrooms, and a master suite with a private balcony. With a carport, patio, and a prime location near key amenities, this home offers the perfect balance of comfort and convenience.</p>
+          </h3></p>
+          <div class="featured-card-price"></div>
+          <button class="featured-card-btn" onclick="alert('Viewing details!')">View Details</button>
+        </div>
+      </div>
+     
+      </div>
+    </div>
+  </section>
+
+  <body>
+    <div class="marketplace-container">
+        <div class="marketplace-header">
+            <h2>Shopping Marketplace</h2>
+            <p>Discover quality products at great prices</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                <img src="iphone.jpg" class="product-image" alt="Iphone" style="width: 100%; height: auto; border-radius: 8px;"> </div>
+                <div class="product-info">
+                    <div class="product-category">Gadgets</div>
+                    <div class="product-name">Iphones</div>
+                    <div class="product-price">20K-60K</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(248)</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-secondary">Add to Cart</button>
+                        <button class="btn-primary">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                 <div class="product-image">
+                <img src="LAWN.jpg" class="product-image" alt="lawn" style="width: 100%; height: auto; border-radius: 8px;"> </div>
+                <div class="product-info">
+                  <br>
+                
+                    <div class="product-category">Home & Garden</div>
+                    <div class="product-name">Solar Lawn Lamp</div>
+                    <div class="product-price">500</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(156)</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-secondary">Add to Cart</button>
+                        <button class="btn-primary">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                <img src="stove.jpg" class="product-image" alt="lawn" style="width: 100%; height: auto; border-radius: 8px;"> </div>
+                <div class="product-info">
+                    <div class="product-category">Appliances</div>
+                    <div class="product-name">La Germania Cooktop</div>
+                    <div class="product-price">10K</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-count">(312)</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-secondary">Add to Cart</button>
+                        <button class="btn-primary">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                  <img src="necklace.jpg" class="product-image" alt="necklace" style="width: 100%; height: auto; border-radius: 8px;"> </div>
+                <div class="product-info">
+                  <br>
+                    <div class="product-category">Accessories</div>
+                    <div class="product-name">Necklaces</div>
+                    <div class="product-price">100-5000</div>
+                    <div class="product-rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="rating-count">(89)</span>
+                    </div>
+                    <div class="product-footer">
+                        <button class="btn-secondary">Add to Cart</button>
+                        <button class="btn-primary">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<body>
+    <section class="inquiry-section">
+        <div class="inquiry-header">
+            <h2>Send us an Inquiry</h2>
+            <p>Have a question? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+
+        <form class="inquiry-form" id="inquiryForm">
+            <div id="successMessage" class="success-message">
+                Thank you for your inquiry! We'll get back to you soon.
+            </div>
+            <div id="errorMessage" class="error-message">
+                There was an error sending your message. Please try again.
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" required placeholder="How can we help?">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required placeholder="Tell us more about your inquiry..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+        </form>
+    </section>
+
+    <script>
+        const form = document.getElementById('inquiryForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Reset messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            // Collect form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            try {
+                // Send to backend (replace with your actual endpoint)
+                const response = await fetch('/api/send-inquiry', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
  
   <footer>
     <div class="footer-container">
