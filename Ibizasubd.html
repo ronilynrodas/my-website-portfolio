@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="icon" type="image/x-icon" href="house.png">
   <title>Ibiza Subdivision - San Mateo </title>
   <style>
@@ -478,6 +479,222 @@ min-height: 80vh;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     }
 
+    .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .carousel-slide:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .carousel-slide:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .carousel-slide:nth-child(4) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .carousel-slide:nth-child(5) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-slide-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .placeholder-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+
+        .placeholder-text {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .placeholder-subtext {
+            font-size: 14px;
+            opacity: 0.9;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation Buttons */
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .carousel-button:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-button.prev {
+            left: 20px;
+        }
+
+        .carousel-button.next {
+            right: 20px;
+        }
+
+        /* Dot Indicators */
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background: white;
+            width: 32px;
+            border-radius: 6px;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .carousel-slide {
+                height: 300px;
+            }
+
+            .carousel-button {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .carousel-button.prev {
+                left: 10px;
+            }
+
+            .carousel-button.next {
+                right: 10px;
+            }
+
+            .placeholder-text {
+                font-size: 18px;
+            }
+
+            .placeholder-icon {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-slide {
+                height: 200px;
+            }
+
+            .carousel-button {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+
+            .placeholder-text {
+                font-size: 16px;
+            }
+
+            .placeholder-icon {
+                font-size: 36px;
+                margin-bottom: 8px;
+            }
+
+            .placeholder-subtext {
+                font-size: 12px;
+            }
+
+            .carousel-dots {
+                bottom: 10px;
+                gap: 6px;
+            }
+
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .dot.active {
+                width: 24px;
+            }
+        }
    
     .featured {
       padding: 80px 20px;
@@ -1046,6 +1263,41 @@ min-height: 80vh;
                 font-size: 28px;
             }
           }
+          /* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+.row {margin: 0 -5px;}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #a7a7a7;
+  color: white;
+}
+
+.fa {font-size:50px;}
+
   </style>
 </head>
 <body>
@@ -1078,7 +1330,7 @@ min-height: 80vh;
         <li><a href="#community">Community</a></li>
         <li><a href="#contact">Contact Us</a></li>
         <li><a href="#faqs">FAQs</a></li>
-        <!-- Updated login button and added signup button with modal triggers -->
+        
         <li id="auth-buttons">
           <button class="login-btn" onclick="openLoginModal()">Login</button>
           <button class="signup-btn" onclick="openSignupModal()">Sign Up</button>
@@ -1096,7 +1348,7 @@ min-height: 80vh;
     </div>
   </nav>
 
-  <!-- Login Modal -->
+  
   <div id="loginModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -1123,7 +1375,7 @@ min-height: 80vh;
     </div>
   </div>
 
-  <!-- Signup Modal -->
+  
   <div id="signupModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -1170,11 +1422,198 @@ min-height: 80vh;
   <section class="hero" id="home">
     <div class="hero-content">
       <h1>Welcome to Ibiza Subdivision</h1>
-      <p>Our Home. Our Community.</p>
+      <p>Find Your Forever Home in the Heart of Ibiza Subdivision</p>
       <button class="cta-button" onclick="alert('Explore properties!')">Explore Now</button>
     </div>
   </section>
+  <br>
+  <br>
+<br>
+  <body>
+    <div class="carousel-container">
+        <div class="carousel-wrapper">
+            <div class="carousel-slides" id="carouselSlides">
+                <!-- Slide 1 -->
+                <div class="carousel-slide">
+                    <div class="carousel-slide-placeholder">
+                      <img src="community2.png" alt="image">
+                        <div class="placeholder-icon"></div>
+                        <div class="placeholder-text">Banner Image 1</div>
+                        <div class="placeholder-subtext">Replace with your image</div>
+                    </div>
+                </div>
 
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="carousel-slide-placeholder">
+                      <img src="community1.png" alt="image">
+                        <div class="placeholder-icon"></div>
+                        <div class="placeholder-text">Banner Image 2</div>
+                        <div class="placeholder-subtext">Replace with your image</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="carousel-slide-placeholder">
+                      <img src="community3.png" alt="image">
+                        <div class="placeholder-icon"></div>
+                        <div class="placeholder-text">Banner Image 3</div>
+                        <div class="placeholder-subtext">Replace with your image</div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="carousel-slide-placeholder">
+                      <img src="community5.jpg" alt="image">
+                        <div class="placeholder-icon"></div>
+                        <div class="placeholder-text">Banner Image 4</div>
+                        <div class="placeholder-subtext">Replace with your image</div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="carousel-slide-placeholder">
+                      <img src="community6.png" alt="image">
+                        <div class="placeholder-icon"></div>
+                        <div class="placeholder-text">Banner Image 5</div>
+                        <div class="placeholder-subtext">Replace with your image</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-button prev" id="prevBtn">❮</button>
+            <button class="carousel-button next" id="nextBtn">❯</button>
+
+            <!-- Dot Indicators -->
+            <div class="carousel-dots" id="dotsContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        let autoSlideTimer;
+
+        // Create dots
+        function createDots() {
+            const dotsContainer = document.getElementById('dotsContainer');
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Update slide display
+        function updateSlide() {
+            const carouselSlides = document.getElementById('carouselSlides');
+            carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Go to specific slide
+        function goToSlide(n) {
+            currentSlide = n % totalSlides;
+            updateSlide();
+            resetAutoSlide();
+        }
+
+        // Next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlide();
+            resetAutoSlide();
+        }
+
+        // Previous slide
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlide();
+            resetAutoSlide();
+        }
+
+        // Auto slide every 5 seconds
+        function autoSlide() {
+            autoSlideTimer = setInterval(nextSlide, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            autoSlide();
+        }
+
+        // Event listeners
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Initialize
+        createDots();
+        autoSlide();
+    </script>
+</body>
+  
+
+  <body>
+    <br>
+    <br>
+    <center>
+    <h1>Happy Satisfied Residents</h1>
+    <br>
+<p>Here’s a look at how satisfied our residents and business owners are in Ibiza Subdivision!</p>
+<br>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-user"></i></p>
+      <h3>1000+</h3>
+      <p>Residents</p>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-check"></i></p>
+      <h3>55+</h3>
+      <p>Projects</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-smile-o"></i></p>
+      <h3>1000+</h3>
+      <p>Happy Residents</p>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <p><i class="fa fa-coffee"></i></p>
+      <h3>100+</h3>
+      <p>Businesses</p>
+    </div>
+  </div>
+</div>
+</center>
+</body>
   
   <section class="featured" id="properties">
     <h2>Featured Townhomes</h2>
