@@ -8,6 +8,8 @@
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
@@ -20,229 +22,401 @@
   --white: #ffffff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   background-color: var(--background);
   color: var(--text-dark);
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 16px;
 }
 
+/* Enhanced header with modern overlay and better typography */
 header {
-  padding: 60px 40px;
+  padding: 120px 40px;
   text-align: center;
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('writes.jpg');
+  background-image: linear-gradient(rgba(44, 44, 44, 0.5), rgba(44, 44, 44, 0.5)), url('writes.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 header h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin: 0 0 12px 0;
+  font-size: 3.5rem;
+  margin: 0 0 20px 0;
   color: var(--white);
   font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 header p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--white);
   margin: 0;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  opacity: 0.95;
 }
 
+/* Modern navigation with better spacing and hover effects */
 .navbar {
   display: flex;
+  justify-content: center;
   background-color: var(--white);
   border-bottom: 1px solid var(--border);
-  padding: 0 40px;
+  padding: 0;
   gap: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .navbar a {
   color: var(--text-dark);
-  padding: 16px 24px;
+  padding: 20px 32px;
   text-decoration: none;
   text-align: center;
   font-size: 0.95rem;
   font-weight: 500;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   transition: all 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
 .navbar a:hover {
   color: var(--primary);
   border-bottom-color: var(--accent);
+  background-color: rgba(139, 115, 85, 0.03);
 }
 
-
+/* Improved container with better max-width and spacing */
 .container {  
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1280px;
+  margin: 60px auto;
+  gap: 0;
+  background-color: var(--white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-
+/* Enhanced sidebar with better visual hierarchy */
 .side {
-  flex: 30%;
+  flex: 35%;
   background-color: var(--white);
-  padding: 40px;
+  padding: 60px 50px;
   border-right: 1px solid var(--border);
 }
 
 .side h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   margin-top: 0;
+  margin-bottom: 30px;
   color: var(--text-dark);
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .side h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  margin-top: 24px;
+  font-size: 1.2rem;
+  margin-top: 32px;
+  margin-bottom: 16px;
   color: var(--text-dark);
+  font-weight: 600;
 }
 
 .side p {
   color: var(--text-light);
   font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Improved author image styling */
+.side .img1 {
+  height: 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.side .img1:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.side .img1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .side a {
   display: inline-block;
   background-color: var(--accent);
   color: var(--white);
-  padding: 12px 20px;
-  border-radius: 4px;
+  padding: 14px 28px;
+  border-radius: 6px;
   text-decoration: none;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
   margin-bottom: 16px;
+  letter-spacing: 0.3px;
 }
 
 .side a:hover {
   background-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.25);
 }
 
-
-/* Main content */
+/* Enhanced main content area with better spacing */
 .main {
-  flex: 70%;
+  flex: 65%;
   background-color: var(--background);
-  padding: 40px;
+  padding: 60px 60px;
 }
 
-.main h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  margin-top: 0;
-  margin-bottom: 8px;
-  color: var(--text-dark);
-}
-
-.main h5 {
-  font-size: 0.85rem;
-  color: var(--text-light);
-  margin: 0 0 20px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-}
-
-.main > div:not(.fakeimg) {
-  margin-bottom: 48px;
-  padding-bottom: 48px;
+/* Improved article styling */
+.article {
+  margin-bottom: 60px;
+  padding-bottom: 60px;
   border-bottom: 1px solid var(--border);
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
 }
 
-.main > div:last-child {
+.article:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.article:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.article:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.article:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--text-dark);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.main h2:hover {
+  color: var(--primary);
+}
+
+.main h5 {
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: 0 0 24px 0;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+/* Enhanced image container with better aspect ratio */
 .img {
   background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('writes.jpg');
+  background-image: linear-gradient(rgba(44, 44, 44, 0.3), rgba(44, 44, 44, 0.3)), url('writes.jpg');
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  padding: 40px;
-  border-radius: 6px;
-  margin-bottom: 24px;
+  padding: 0;
+  border-radius: 8px;
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--white);
   font-weight: 500;
-  min-height: 200px;
+  min-height: 300px;
+  height: 300px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .main p {
   color: var(--text-light);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.8;
-  margin: 16px 0;
+  margin: 20px 0;
 }
 
-/* Footer */
+/* Enhanced read more links */
+.main a {
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 16px;
+  padding: 12px 24px;
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.main a:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.25);
+}
+
+/* Enhanced footer */
 footer {
-  padding: 40px;
+  padding: 50px 40px;
   text-align: center;
   background: var(--text-dark);
   color: var(--white);
-  border-top: 1px solid var(--border);
+  border-top: 4px solid var(--primary);
 }
 
-footer h2 {
-  font-family: 'Playfair Display', serif;
+footer p {
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
 }
 
-/* Responsive layout */
-@media screen and (max-width: 768px) {
+/* Improved responsive design */
+@media screen and (max-width: 968px) {
   header {
-    padding: 40px 20px;
+    padding: 80px 30px;
+    min-height: 350px;
   }
 
   header h1 {
-    font-size: 2rem;
-  }
-
-  .navbar {
-    padding: 0 20px;
-    flex-wrap: wrap;
-  }
-
-  .navbar a {
-    flex: 1;
-    min-width: 120px;
-    padding: 12px 16px;
-    font-size: 0.9rem;
+    font-size: 2.5rem;
   }
 
   .container {
+    margin: 40px 20px;
     flex-direction: column;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('roni.jpg');
-
   }
 
   .side {
     flex: 100%;
     border-right: none;
     border-bottom: 1px solid var(--border);
-    padding: 30px 20px;
+    padding: 40px 30px;
   }
 
   .main {
     flex: 100%;
+    padding: 40px 30px;
+  }
+
+  .main h2 {
+    font-size: 1.7rem;
+  }
+
+  .img {
+    height: 250px;
+    min-height: 250px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 60px 20px;
+    min-height: 300px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .navbar a {
+    flex: 1;
+    min-width: 120px;
+    padding: 16px 20px;
+    font-size: 0.9rem;
+  }
+
+  .container {
+    margin: 30px 15px;
+  }
+
+  .side {
+    padding: 30px 20px;
+  }
+
+  .side h2 {
+    font-size: 1.5rem;
+  }
+
+  .side .img1 {
+    height: 220px;
+  }
+
+  .main {
     padding: 30px 20px;
   }
 
@@ -250,119 +424,208 @@ footer h2 {
     font-size: 1.5rem;
   }
 
+  .article {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+  }
+
+  .img {
+    height: 220px;
+    min-height: 220px;
+  }
+
   footer {
-    padding: 30px 20px;
+    padding: 40px 20px;
   }
 }
 
 @media screen and (max-width: 480px) {
   header {
-    padding: 30px 16px;
+    padding: 50px 16px;
+    min-height: 260px;
   }
 
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   header p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .navbar a {
-    padding: 10px 12px;
+    padding: 14px 16px;
     font-size: 0.85rem;
+    letter-spacing: 0.3px;
+  }
+
+  .container {
+    margin: 20px 10px;
   }
 
   .side {
-    padding: 20px 16px;
+    padding: 25px 20px;
+  }
+
+  .side h2 {
+    font-size: 1.4rem;
+  }
+
+  .side .img1 {
+    height: 200px;
   }
 
   .main {
-    padding: 20px 16px;
+    padding: 25px 20px;
   }
 
   .main h2 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
+  }
+
+  .article {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
 
   .img {
-    padding: 30px;
-    min-height: 150px;
+    height: 200px;
+    min-height: 200px;
   }
+}
 
-  .img1 {
-    padding: 30px;
-    min-height: 150px;
-  }
+/* Add scroll progress indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  z-index: 1000;
+  transition: width 0.1s ease;
 }
 </style>
 </head>
 <body>
+
+<!-- Added scroll progress indicator -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <header>
   <h1>She Writes About..</h1>
   <p>Read inspiring stories, insights, and ideas in life from a woman's perspective.</p>
 </header>
 
-<center>
-<div class="navbar">
+<nav class="navbar">
   <a href="#">Home</a>
   <a href="#">Stories</a>
   <a href="#">Insights</a>
   <a href="#">Contact</a>
-</div>
-</center>
+</nav>
 
 <div class="container">
-  <div class="side">
+  <aside class="side">
     <h2>About the Writer</h2>
- <div class="img1" style="height:200px;">
-    <img src="hahue.jpg" alt="Description of Image" style="height:100%; width:auto;">
-</div>
-<br>
-    <p> Hi! I am Ronilyn, 28 years old.
+    <div class="img1">
+      <img src="hahue.jpg" alt="Ronilyn - Writer and Blogger">
+    </div>
+    <p>Hi! I am Ronilyn, 28 years old.</p>
+    <p>I live in the Philippines. I like to express myself or my views in life through writing. Aside from writing, I am a working individual. Just like a valued masterpiece, as a person, I am still a work in progress. I set my goals. I am learning new things and will continue to develop myself to unlock my full potential.</p>
+  </aside>
 
-I live in the Philippines. I like to express myself or my views in life through writing. Aside from writing, I am a working individual. Just like a valued masterpiece, as a person, I am still a work in progress. I set my goals. I am learning new things and will continue to develop myself to unlock my full potential.</p>
-    
-  </div>
+  <main class="main">
+    <!-- Wrapped articles in semantic article elements -->
+    <article class="article">
+      <h2>Raising Awareness To Become Health-Conscious in the Late 20s</h2>
+      <h5>#Health, #LifeStyle</h5>
+      <div class="img" aria-label="Health and Lifestyle"></div>
+      <p>Iced coffee? Fast food? Soft drinks? Sweets? Who wouldn't say no to these foods and drinks?</p>
+      <p>Not you, not your best friend, and not your family. Not your colleagues. And not even me.</p>
+      <p>As for me, I love drinking iced coffee at any time of day. When it's morning and I have a day off, I enjoy drinking hot coffee, typically instant coffee. It's also strange because when I started earning money, I craved fast food too much.</p>
+      <a href="https://shewritesabout0.wordpress.com/2024/01/23/raising-awareness-to-become-health-conscious-in-the-early-20s/">Read Full Article →</a>
+    </article>
 
-  <div class="main">
-    <h2>Raising Awareness To Become Health-Concious in the Late 20s</h2>
-    <h5> #Health, #LifeStyle </h5>
-    <div class="img" style="height:200px;"></div>
-    <p>Iced coffee? Fast food? Soft drinks? Sweets? Who wouldn't say no to these foods and drinks?
+    <article class="article">
+      <h2>Catch and Release: We Can't Carry All At Once</h2>
+      <h5>#MentalHealth</h5>
+      <div class="img" aria-label="Mental Health Discussion"></div>
+      <p>Let's talk about mental health. I've been thinking a lot these past few weeks about this topic, and I never get a chance to come up with a great intro to start. I never expected that I would come up with a good introduction while I was watching a movie starring Julia Roberts, one of my classic favorite actresses. So, I had to stop watching the movie and turn off the TV because my mind is all over this topic. Actually, I originally thought about this topic while in the middle of chatting with my officemates. We talked about stress and dealing with problems at work and home issues.</p>
+      <a href="https://shewritesabout0.wordpress.com/2024/06/20/catch-and-release-we-cant-carry-all-at-once/">Read Full Article →</a>
+    </article>
 
-Not you, not your best friend, and not your family. Not your colleagues. And not even me.
-
-As for me, I love drinking iced coffee at any time of day. When it's morning and I have a day off, I enjoy drinking hot coffee, typically instant coffee. It's also strange because when I started earning money, I craved fast food too much.</p>
-<a href="https://shewritesabout0.wordpress.com/2024/01/23/raising-awareness-to-become-health-conscious-in-the-early-20s/"> View More.. </a>
-<br>
-<br>
-    <h2>Catch and Release: We Can't Carry All At Once</h2>
-    <h5>#MentalHealth</h5>
-    <div class="img" style="height:200px;"></div>
-    <p>Let's talk about mental health. I've been thinking a lot these past few weeks about this topic, and I never get a chance to come up with a great intro to start. I never expected that I would come up with a good introduction while I was watching a movie starring Julia Roberts, one of my classic favorite actresses. So, I had to stop watching the movie and turn off the TV because my mind is all over this topic. Actually, I originally thought about this topic while in the middle of chatting with my officemates. We talked about stress and dealing with problems at work and home issues.</p>
-  <a href="https://shewritesabout0.wordpress.com/2024/06/20/catch-and-release-we-cant-carry-all-at-once/"> View More.. </a>
-<br>
-<br>
-    <h2>Living a Fulfilling Life</h2>
-    <h5>#LifeTalks</h5>
-    <div class="img" style="height:200px;"></div>
-    <p>I realized that living in this world is only temporary. It might be a long or short journey---we never know how long we will live here. It is scary to realize that, despite taking good care of our health and avoiding accidents, we can never be certain what might end our lives or how long we will live.
-We wake up every morning and go to sleep in the evening, following this routine in a continuous loop until one day, it suddenly stops. Suddenly, the people around you can neither see nor talk to you because your physical body is no longer moving and is dead..</p>
-  <a href="https://shewritesabout0.wordpress.com/2025/08/11/living-a-fulfilling-life/"> View More.. </a>
-<br>
-<br>
-</div>
-</div>
-</div>
+    <article class="article">
+      <h2>Living a Fulfilling Life</h2>
+      <h5>#LifeTalks</h5>
+      <div class="img" aria-label="Living a Fulfilling Life"></div>
+      <p>I realized that living in this world is only temporary. It might be a long or short journey---we never know how long we will live here. It is scary to realize that, despite taking good care of our health and avoiding accidents, we can never be certain what might end our lives or how long we will live.</p>
+      <p>We wake up every morning and go to sleep in the evening, following this routine in a continuous loop until one day, it suddenly stops. Suddenly, the people around you can neither see nor talk to you because your physical body is no longer moving and is dead.</p>
+      <a href="https://shewritesabout0.wordpress.com/2025/08/11/living-a-fulfilling-life/">Read Full Article →</a>
+    </article>
+  </main>
 </div>
 
+<footer>
+  <p>&copy; 2025 She Writes About. All rights reserved.</p>
+</footer>
 
+<!-- Added JavaScript for scroll progress and smooth interactions -->
+<script>
+// Scroll progress indicator
+window.addEventListener('scroll', function() {
+  const scrollProgress = document.getElementById('scrollProgress');
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrollPercent = (scrollTop / scrollHeight) * 100;
+  scrollProgress.style.width = scrollPercent + '%';
+});
 
- <footer>
-        <p>&copy; 2025 She Writes About. All rights reserved.</p>
-    </footer>
+// Smooth scroll for navigation links
+document.querySelectorAll('.navbar a').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    if (this.getAttribute('href').startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  });
+});
+
+// Intersection Observer for article animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.article').forEach(article => {
+  observer.observe(article);
+});
+
+// Add active state to navigation on scroll
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 100) {
+    navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+  } else {
+    navbar.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.03)';
+  }
+});
+</script>
 
 </body>
 </html>
+
